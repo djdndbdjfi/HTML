@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Verification Successful</title>
+  <style>
+    body {
+      background-color: #0f172a;
+      color: #f8fafc;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      padding-top: 50px;
+    }
+    .card {
+      background-color: #1e293b;
+      border-radius: 16px;
+      padding: 30px;
+      display: inline-block;
+      box-shadow: 0 0 20px rgba(0,0,0,0.4);
+      max-width: 90%;
+    }
+    h1 {
+      color: #22c55e;
+    }
+    .button {
+      margin-top: 20px;
+      background-color: #3b82f6;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      display: inline-block;
+    }
+    .fade {
+      animation: fadein 2s ease-out;
+    }
+    .redirect-msg {
+      margin-top: 20px;
+      font-size: 16px;
+      color: #cbd5e1;
+    }
+    @keyframes fadein {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="card fade">
+    <h1>✅ Verification Successful!</h1>
+    <p>🎉 Now go back to the <strong>Telegram Bot</strong> and enjoy your verified request!</p>
+    <p>⚠️ This file will automatically delete after <strong>10 minutes</strong> due to copyright restrictions.</p>
+    <a class="button" id="gobot" href="https://t.me/nr_codex">Go to Telegram Bot</a>
+    <div class="redirect-msg" id="redirectText">⏳ Please wait, you will be redirected to the bot automatically in <span id="countdown">5</span> seconds...</div>
+  </div>
+
+  <script>
+    let countdown = 5;
+    const countdownSpan = document.getElementById("countdown");
+
+    const timer = setInterval(() => {
+      countdown--;
+      countdownSpan.textContent = countdown;
+      if (countdown <= 0) {
+        clearInterval(timer);
+        window.location.href = "https://t.me/nr_codex";
+      }
+    }, 1000);
+
+    // Optional: If UID is present, update button link (not required for redirect)
+    const urlParams = new URLSearchParams(window.location.search);
+    const uid = urlParams.get("uid");
+    if (uid) {
+      document.getElementById("gobot").href = `https://t.me/nr_codex?start=verified_${uid}`;
+    }
+  </script>
+</body>
+</html>
