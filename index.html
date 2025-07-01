@@ -65,7 +65,7 @@
       countdownSpan.textContent = countdown;
       if (countdown <= 0) {
         clearInterval(timer);
-        window.location.href = "https://t.me/nr_codex";
+        window.location.href = "https://t.me/nrcodex_filestore_bot";
       }
     }, 1000);
 
@@ -73,7 +73,7 @@
     const urlParams = new URLSearchParams(window.location.search);
     const uid = urlParams.get("uid");
     if (uid) {
-      document.getElementById("gobot").href = `https://t.me/nr_codex?start=verified_${uid}`;
+      document.getElementById("gobot").href = `https://t.me/nrcodex_filestore_bot?start=verified_${uid}`;
     }
   </script>
 </body>
